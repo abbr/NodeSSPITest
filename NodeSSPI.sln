@@ -7,7 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ApacheModuleAuthSSPI", "..\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{85C05F5E-2DD4-4F83-B472-9E7CE280A5F6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NodeSSPI", "node_modules\node_sspi\build\NodeSSPI.vcxproj", "{BF9678A4-18B0-CACB-CC91-44749EAF95F3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NodeSSPI", "node_modules\node-sspi\build\NodeSSPI.vcxproj", "{BF9678A4-18B0-CACB-CC91-44749EAF95F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

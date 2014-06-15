@@ -24,7 +24,10 @@ app.configure(function () {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
     res.header("Expires", 0);
-    res.send('hello ' + req.get('remote_user'));
+    
+    var nodeSSPI = require('node-sspi');
+    var inst = new nodeSSPI({name:'hello'})
+    res.send(inst.sayHello() + ' ' + req.get('remote_user'));
   });
 });
 
