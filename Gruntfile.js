@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     },
     watch : {
       express : {
-        files : ['server.js', 'lib/{,*//*}*.{js,json}'],
+        files : ['server.js', '{,node_modules/node-sspi/**/}*.{js,json}'],
         tasks : ['express:dev'],
         options : {
           livereload : true,

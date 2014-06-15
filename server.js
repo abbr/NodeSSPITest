@@ -7,7 +7,7 @@ var app = express();
 var server = require('http').createServer(app);
 
 // Express Configuration
-app.configure('development', function() {
+app.configure('development', function () {
   app.use(require('connect-livereload')());
 });
 
@@ -19,15 +19,19 @@ app.configure(function () {
     secret: 'ffoisaiods984'
   }));
   app.use(express.methodOverride());
-  // prevent IE caching
   app.use(function (req, res, next) {
+    var nodeSSPI = require('node-sspi');
+    var nodeSSPIObj = new nodeSSPI({
+      authoritative: false
+    });
+    nodeSSPIObj.authenticate(req, res, next);
+  });
+  app.use(function (req, res, next) {
+    // prevent IE caching
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
     res.header("Expires", 0);
-    
-    var nodeSSPI = require('node-sspi');
-    var inst = new nodeSSPI({name:'hello'})
-    res.send(inst.sayHello() + ' ' + req.get('remote_user'));
+    res.send('hello ' + req.get('Remote-User'));
   });
 });
 
