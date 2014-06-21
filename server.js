@@ -31,7 +31,7 @@ app.configure(function () {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
     res.header("Expires", 0);
-    res.send('hello ' + req.get('Remote-User'));
+    res.send('hello ' + req.user);
   });
 });
 

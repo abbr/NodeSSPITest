@@ -61,7 +61,7 @@ module.exports = function(grunt) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'express:prod', 'open', 'express-keepalive']);
     }
-    grunt.task.run(['express:dev', 'open', 'watch']);
+    grunt.task.run(['express:dev', 'watch']);
   });
 
   grunt.registerTask('default', ['serve']);
