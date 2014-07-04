@@ -22,7 +22,7 @@ app.configure(function () {
   app.use(function (req, res, next) {
     var nodeSSPI = require('node-sspi');
     var nodeSSPIObj = new nodeSSPI({
-      authoritative: false
+      domain: 'xxx'
     });
     nodeSSPIObj.authenticate(req, res, next);
   });
@@ -31,7 +31,7 @@ app.configure(function () {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
     res.header("Expires", 0);
-    res.send('hello ' + req.user);
+    res.send('hello ' + req.connection.user);
   });
 });
 
