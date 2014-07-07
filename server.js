@@ -22,20 +22,22 @@ app.configure(function () {
   app.use(function (req, res, next) {
     var nodeSSPI = require('node-sspi');
     var nodeSSPIObj = new nodeSSPI({
-      domain: 'xxx'
+      retrieveGroups: true
     });
     nodeSSPIObj.authenticate(req, res, next);
   });
   app.use(function (req, res, next) {
-    // prevent IE caching
-    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-    res.header("Pragma", "no-cache");
-    res.header("Expires", 0);
-    res.send('hello ' + req.connection.user);
+    var out = 'Hello ' + req.connection.user + '! You belong to following groups:<br/><ul>';
+    if (req.connection.userGroups) {
+      for (var i in req.connection.userGroups) {
+        out += '<li>'+ req.connection.userGroups[i] + '</li><br/>\n';
+      }
+    }
+    out += '</ul>';
+    res.send(out);
   });
 });
 
-// bootstrap to get sites and users array async when using mongoose
 // Start server
 var port = process.env.PORT || 3000;
 server.listen(port, function () {
