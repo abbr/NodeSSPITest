@@ -24,7 +24,9 @@ app.configure(function () {
     var nodeSSPIObj = new nodeSSPI({
       retrieveGroups: true
     });
-    nodeSSPIObj.authenticate(req, res, next);
+    nodeSSPIObj.authenticate(req, res, function(err){
+      res.finished || next();
+    });
   });
   app.use(function (req, res, next) {
     var out = 'Hello ' + req.connection.user + '! You belong to following groups:<br/><ul>';
