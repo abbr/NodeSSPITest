@@ -23,6 +23,8 @@ app.configure(function () {
     var nodeSSPI = require('node-sspi');
     var nodeSSPIObj = new nodeSSPI({
       retrieveGroups: true
+      ,offerSSPI: false
+      ,offerBasic: true
     });
     nodeSSPIObj.authenticate(req, res, function(err){
       res.finished || next();

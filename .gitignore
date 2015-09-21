@@ -26,3 +26,5 @@ node_modules
 Debug
 ipch
 test
+Release/
+.project
