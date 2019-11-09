@@ -28,3 +28,4 @@ ipch
 test
 Release/
 .project
+.vs/
